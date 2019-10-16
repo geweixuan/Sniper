@@ -7,7 +7,7 @@
 
 ```python
 pip install -r requirements.txt
-python3 movies.py
+python3 main.py
 ```
 
 ### 打包
