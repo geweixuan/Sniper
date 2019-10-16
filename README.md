@@ -1,5 +1,5 @@
 # Sniper
-基于PyQt、PySpider的自动化测试工具
+基于PyQt、PySpider的自动化测试工具。支持通过django对外发布web服务
 
 ### 使用
 
