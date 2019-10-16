@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 '入口类'
-from gui.Sniper import Sniper as SniperGui
+from gui.main_window import Sniper as SniperGui
 __author__ = 'weixuan.ge'
 
 

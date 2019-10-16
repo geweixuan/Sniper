@@ -90,27 +90,25 @@ class LayoutDialog(QMainWindow):
 
     def init_event(self):
 
-        self.start_django_button.clicked.connect(self.start_django_service)
-
+        self.start_django_button.clicked.connect(self.btn_start_django_click)
+        self.search_push_button.clicked.connect(self.btn_search_push_click)
         reward_action = QAction('点击试试', self)
-        reward_action.triggered.connect(self.click_event)
+        # reward_action.triggered.connect(self.click_event)
+
 
         # 工具栏菜单
         menu_list = self.menu_bar.addMenu("菜单项")
         menu_list.addAction(reward_action)
 
-    def click_event(self):
-        print("---------")
+    def btn_search_push_click(self, event):
+        address_val = self.address_edit.text()
+        print(address_val)
 
-    def start_django_service(self, event):
+    def btn_start_django_click(self, event):
         try:
-            from web_dj import manage
-            import subprocess
+            from web_dj import webThread
+
         except ImportError as e:
             QMessageBox.about(self, "消息提示", "django加载失败")
-
-        is_start = manage.start()
-        if is_start:
-            QMessageBox.about(self, "消息提示", "web服务启动成功")
-        else:
-            QMessageBox.about(self, "消息提示", "web服务启动失败")
+        webThread.django_service_start()
+        QMessageBox.about(self, "消息提示", "web服务启动成功")

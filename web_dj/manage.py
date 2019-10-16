@@ -3,7 +3,6 @@
 import os
 import sys
 
-
 def start():
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'djconf.settings')
     try:
