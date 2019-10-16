@@ -60,6 +60,8 @@ class LayoutDialog(QMainWindow):
         self.operate_select_option_combobox.addItem(self.tr("文档生成"))
         # 开始按钮
         self.search_push_button = QPushButton(self.tr("开始"))
+        # web服务启动按钮
+        self.start_django_button = QPushButton(self.tr("启动django服务"))
         # 控制台输出
         self.tip_label = QLabel(self.tr("准备就绪..."))
         # 菜单栏
@@ -78,6 +80,7 @@ class LayoutDialog(QMainWindow):
         top_layout.addWidget(self.operate_select_option_combobox, 0, 3)
         # 开始按钮
         top_layout.addWidget(self.search_push_button, 0, 4)
+        top_layout.addWidget(self.start_django_button, 1, 0)
 
         main_frame = QWidget()
         self.setCentralWidget(main_frame)
@@ -86,6 +89,9 @@ class LayoutDialog(QMainWindow):
         return self
 
     def init_event(self):
+
+        self.start_django_button.clicked.connect(self.start_django_service)
+
         reward_action = QAction('点击试试', self)
         reward_action.triggered.connect(self.click_event)
 
@@ -95,3 +101,16 @@ class LayoutDialog(QMainWindow):
 
     def click_event(self):
         print("---------")
+
+    def start_django_service(self, event):
+        try:
+            from web_dj import manage
+            import subprocess
+        except ImportError as e:
+            QMessageBox.about(self, "消息提示", "django加载失败")
+
+        is_start = manage.start()
+        if is_start:
+            QMessageBox.about(self, "消息提示", "web服务启动成功")
+        else:
+            QMessageBox.about(self, "消息提示", "web服务启动失败")
