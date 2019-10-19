@@ -20,7 +20,7 @@ class webThread(threading.Thread):
     def start_django(self):
         print("===========start_django工作目录============", BASE_DIR)
         os.chdir(BASE_DIR + "\\web_dj")
-        os.system("python manage.py runserver 0.0.0.0:8000")
+        os.system("E:\\tools\\python_64bit\\python manage.py runserver 0.0.0.0:8000")
 
 
 def django_service_start():

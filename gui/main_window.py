@@ -59,7 +59,7 @@ class LayoutDialog(QMainWindow):
         self.operate_select_option_combobox.addItem(self.tr("接口调用"))
         self.operate_select_option_combobox.addItem(self.tr("文档生成"))
         # 开始按钮
-        self.search_push_button = QPushButton(self.tr("开始"))
+        self.search_push_button = QPushButton(self.tr("进入"))
         # web服务启动按钮
         self.start_django_button = QPushButton(self.tr("启动django服务"))
         # 控制台输出
@@ -93,7 +93,7 @@ class LayoutDialog(QMainWindow):
         self.start_django_button.clicked.connect(self.btn_start_django_click)
         self.search_push_button.clicked.connect(self.btn_search_push_click)
         reward_action = QAction('点击试试', self)
-        # reward_action.triggered.connect(self.click_event)
+        reward_action.triggered.connect(self.click_event)
 
 
         # 工具栏菜单
@@ -106,9 +106,9 @@ class LayoutDialog(QMainWindow):
 
     def btn_start_django_click(self, event):
         try:
-            from web_dj import webThread
+            from web_dj import web_thread
 
         except ImportError as e:
             QMessageBox.about(self, "消息提示", "django加载失败")
-        webThread.django_service_start()
+        web_thread.django_service_start()
         QMessageBox.about(self, "消息提示", "web服务启动成功")

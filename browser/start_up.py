@@ -41,10 +41,9 @@ class Example(QMainWindow):
 
     @staticmethod
     def runExe():
-        # exePath = "C:\\Windows\\system32\\calc.exe"
+        exePath = "C:\\Windows\\system32\\calc.exe"
         exePath = "C:\\Program Files\\Internet Explorer\\iexplore.exe"
         subprocess.Popen(exePath)
-
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
