@@ -1,0 +1,8 @@
+Numpy
+Cython
+Six
+SciPy
+Matplotlib
+NetworkX
+Pillow
+dask[array]
